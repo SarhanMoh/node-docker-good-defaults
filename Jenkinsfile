@@ -27,5 +27,13 @@ pipeline {
       }
     }
 
+    stage('upload') {
+      steps {
+        sh 'docker tag node1:$BUILD_ID sarhanmo/node-good-defualt:$BUILD_ID'
+        sh 'docker login -u sarhanmo -p Mohammad-99'
+        sh 'docker push sarhanmo/node-good-defualt:$BUILD_ID'
+      }
+    }
+
   }
 }
